@@ -1,0 +1,114 @@
+﻿<Window
+    x:Class="OnStoreWPF.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:onStoreWpf="clr-namespace:OnStoreWPF"
+    Title="MainWindow"
+    Width="900"
+    Height="500"
+    MinWidth="280"
+    MinHeight="280"
+    AllowsTransparency="True"
+    KeyDown="HandleEsc"
+    ResizeMode="CanResizeWithGrip"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <Geometry x:Key="Logo">
+            M4167 45833 c-4 -3 -7 -9399 -7 -20880 l0 -20873 5840 0 5840 0 -2
+            2503 -3 2502 -3332 3 -3333 2 0 6705 0 6705 3330 0 3330 0 0 -5505 0 -5505
+            2505 0 2505 0 0 5505 0 5505 4285 0 4285 0 0 -5505 0 -5505 2505 0 2505 0 0
+            5505 0 5505 3205 0 3205 0 0 -6705 0 -6705 -3207 -2 -3208 -3 -3 -2503 -2
+            -2502 5715 0 5715 0 -2 20878 -3 20877 -5710 0 -5710 0 -3 -2502 -2 -2503
+            3210 0 3210 0 0 -6665 0 -6665 -3205 0 -3205 0 0 5503 0 5502 -9295 0 -9295 0
+            0 -5502 0 -5503 -3330 0 -3330 0 0 6665 0 6665 3335 0 3335 0 -2 2503 -3 2502
+            -5831 3 c-3207 1 -5834 -1 -5837 -5z m25243 -15333 l0 -3000 -4285 0 -4285 0
+            0 3000 0 3000 4285 0 4285 0 0 -3000z
+        </Geometry>
+    </Window.Resources>
+    <Grid Background="#F0F0F0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="45" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="44" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <hc:AnimationPath
+            Margin="3"
+            Data="{DynamicResource Logo}"
+            RenderTransformOrigin="0.5,0.5"
+            Stroke="#FFBD2F"
+            StrokeThickness="2"
+            Duration="00:00:35">
+            <hc:AnimationPath.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform Angle="180" />
+                    <TranslateTransform />
+                </TransformGroup>
+            </hc:AnimationPath.RenderTransform>
+        </hc:AnimationPath>
+        <Grid Grid.Row="0" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="85" />
+            </Grid.ColumnDefinitions>
+            <Border
+                Margin="3"
+                Background="#FFBD2F"
+                BorderThickness="5"
+                CornerRadius="5">
+                <TextBox
+                    VerticalContentAlignment="Center"
+                    fw:Extensions.PlaceholderText="Search"
+                    Background="{x:Null}"
+                    BorderBrush="{x:Null}"
+                    BorderThickness="0"
+                    FontFamily="Segoe UI Semibold"
+                    MaxLength="20"
+                    Style="{StaticResource TextBoxRevealStyle}" />
+            </Border>
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type Ellipse}">
+                        <Setter Property="Margin" Value="0,0,10,0" />
+                    </Style>
+                </StackPanel.Resources>
+                <Ellipse
+                    Name="min"
+                    Width="20"
+                    Height="20"
+                    Fill="#FF27CA41"
+                    MouseLeftButtonDown="ControlBox_Click"
+                    Stroke="#FF2CAD2F" />
+                <Ellipse
+                    Name="max"
+                    Width="20"
+                    Height="20"
+                    Fill="#FFC02E"
+                    MouseLeftButtonDown="ControlBox_Click"
+                    Stroke="#E4A42A" />
+                <Ellipse
+                    Name="close"
+                    Width="20"
+                    Height="20"
+                    Fill="#FF6058"
+                    MouseLeftButtonDown="Close_Click"
+                    Stroke="#E75048" />
+            </StackPanel>
+        </Grid>
+        <ScrollViewer Grid.Row="1" Grid.Column="1">
+            <WrapPanel Background="Transparent">
+                <onStoreWpf:ItemUC />
+            </WrapPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>
