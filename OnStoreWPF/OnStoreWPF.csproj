@@ -46,9 +46,6 @@
     <Reference Include="HandyControl, Version=3.2.0.0, Culture=neutral, PublicKeyToken=45be8712787a1e5b, processorArchitecture=MSIL">
       <HintPath>..\packages\HandyControl.3.2.0\lib\net48\HandyControl.dll</HintPath>
     </Reference>
-    <Reference Include="MahApps.Metro, Version=2.0.0.0, Culture=neutral, PublicKeyToken=51482d6f650b2b3f, processorArchitecture=MSIL">
-      <HintPath>..\packages\MahApps.Metro.2.4.7\lib\net47\MahApps.Metro.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.19\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
     </Reference>
@@ -89,7 +86,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Item.cs" />
+    <Compile Include="Models\Item.cs" />
     <Compile Include="ItemUC.xaml.cs">
       <DependentUpon>ItemUC.xaml</DependentUpon>
     </Compile>
@@ -126,22 +123,18 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Assets\lays2.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\cheetos.png" />
     <Resource Include="Assets\cola classic.png" />
     <Resource Include="Assets\cola.png" />
     <Resource Include="Assets\fanta.png" />
-    <Resource Include="Assets\fuzetea.png" />
     <Resource Include="Assets\lays1.png" />
-    <Resource Include="Assets\lays2.png" />
-    <Resource Include="Assets\lays3.png" />
-    <Resource Include="Assets\lays4.png" />
-    <Resource Include="Assets\lays5.png" />
+    <Resource Include="Assets\doritos.png" />
     <Resource Include="Assets\m&amp;m%27s.png" />
     <Resource Include="Assets\oreo.png" />
-    <Resource Include="Assets\snickers.png" />
-    <Resource Include="Assets\sprite.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

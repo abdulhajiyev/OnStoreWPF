@@ -13,6 +13,8 @@
     MinWidth="280"
     MinHeight="280"
     AllowsTransparency="True"
+    Background="Transparent"
+    BorderThickness="0"
     KeyDown="HandleEsc"
     ResizeMode="CanResizeWithGrip"
     WindowStartupLocation="CenterScreen"
@@ -32,6 +34,7 @@
         </Geometry>
     </Window.Resources>
     <Grid Background="#F0F0F0">
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="45" />
             <ColumnDefinition />
@@ -67,6 +70,8 @@
                 BorderThickness="5"
                 CornerRadius="5">
                 <TextBox
+                    Name="TextBoxSearch"
+                    TextChanged="TextBoxBase_OnTextChanged"
                     VerticalContentAlignment="Center"
                     fw:Extensions.PlaceholderText="Search"
                     Background="{x:Null}"
@@ -105,10 +110,47 @@
                     Stroke="#E75048" />
             </StackPanel>
         </Grid>
+        <!--<ScrollViewer Grid.Row="1" Grid.Column="1">
+            <ListView
+                Background="Transparent"
+                ItemsSource="{Binding ItemUCs, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" ScrollViewer.CanContentScroll="False"
+                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                ScrollViewer.VerticalScrollBarVisibility="Visible">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+            </ListView>
+        </ScrollViewer>-->
+
+        <!--<ListBox Grid.Column="1" Grid.Row="1" ItemsSource="{Binding ItemUCs,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>-->
+
         <ScrollViewer Grid.Row="1" Grid.Column="1">
-            <WrapPanel Background="Transparent">
-                <onStoreWpf:ItemUC />
-            </WrapPanel>
+            <ItemsControl ItemsSource="{Binding ItemUCs, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
         </ScrollViewer>
+        <!--<Border Background="Red" Grid.Column="1" Grid.Row="1">
+            <ListBox ItemsSource="{Binding ItemUCs, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="{x:Null}">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+        </Border>-->
+
+
     </Grid>
 </Window>

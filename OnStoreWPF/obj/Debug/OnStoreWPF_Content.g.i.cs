@@ -8,19 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/cheetos.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/cola%20classic.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/cola.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/fanta.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/fuzetea.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/lays1.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/lays2.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/lays3.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/lays4.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/lays5.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/m&m\'s.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/oreo.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/snickers.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/sprite.png")]
 
 
