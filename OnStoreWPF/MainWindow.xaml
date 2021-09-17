@@ -32,9 +32,11 @@
             -5831 3 c-3207 1 -5834 -1 -5837 -5z m25243 -15333 l0 -3000 -4285 0 -4285 0
             0 3000 0 3000 4285 0 4285 0 0 -3000z
         </Geometry>
+        <Geometry x:Key="ThumbsUpGeometry">
+            M68.191078 915.462005l161.384597 0L229.575676 431.30719 68.191078 431.30719 68.191078 915.462005zM955.808922 471.653083c0-44.582381-36.109406-80.69281-80.69281-80.69281L620.329241 390.960273 658.859789 206.578915c0.807389-4.034896 1.412163-8.271384 1.412163-12.709463 0-16.743336-6.859221-31.873941-17.752316-42.767036l-42.968627-42.565445L333.871043 374.216937c-14.524808 14.7264-23.602557 34.899858-23.602557 57.090253l0 403.462005c0 44.582381 36.109406 80.69281 80.69281 80.69281l363.116111 0c33.487695 0 62.133106-20.37505 74.236771-49.222051l121.643478-284.441261c3.63069-9.279341 5.850242-19.164478 5.850242-29.452799L955.807898 475.083206l-0.403183-0.403183L955.808922 471.653083z
+        </Geometry>
     </Window.Resources>
     <Grid Background="#F0F0F0">
-
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="45" />
             <ColumnDefinition />
@@ -49,7 +51,7 @@
             RenderTransformOrigin="0.5,0.5"
             Stroke="#FFBD2F"
             StrokeThickness="2"
-            Duration="00:00:35">
+            Duration="00:00:5">
             <hc:AnimationPath.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform />
@@ -71,7 +73,6 @@
                 CornerRadius="5">
                 <TextBox
                     Name="TextBoxSearch"
-                    TextChanged="TextBoxBase_OnTextChanged"
                     VerticalContentAlignment="Center"
                     fw:Extensions.PlaceholderText="Search"
                     Background="{x:Null}"
@@ -79,7 +80,8 @@
                     BorderThickness="0"
                     FontFamily="Segoe UI Semibold"
                     MaxLength="20"
-                    Style="{StaticResource TextBoxRevealStyle}" />
+                    Style="{StaticResource TextBoxRevealStyle}"
+                    TextChanged="TextBoxBase_OnTextChanged" />
             </Border>
             <StackPanel Grid.Column="1" Orientation="Horizontal">
                 <StackPanel.Resources>
@@ -131,16 +133,108 @@
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
         </ListBox>-->
-
-        <ScrollViewer Grid.Row="1" Grid.Column="1">
-            <ItemsControl ItemsSource="{Binding ItemUCs, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
-                <ItemsControl.ItemsPanel>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <ListBox
+                Name="scroll"
+                Background="Transparent"
+                BorderThickness="0"
+                ItemsSource="{Binding ItemUCs, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                MouseDoubleClick="ScrollViewer_MouseDoubleClick"
+                ScrollViewer.CanContentScroll="False"
+                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                ScrollViewer.VerticalScrollBarVisibility="Visible">
+                <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel />
                     </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-            </ItemsControl>
-        </ScrollViewer>
+                </ListBox.ItemsPanel>
+            </ListBox>
+            <Border
+                Name="EditPanel"
+                Grid.Column="1"
+                Width="300"
+                Visibility="Collapsed">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="110*" />
+                        <RowDefinition Height="55*" />
+                        <RowDefinition Height="55*" />
+                        <RowDefinition Height="55*" />
+                    </Grid.RowDefinitions>
+                    <Grid
+                        Grid.Row="0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                        <Image
+                            Name="ItmImage"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Source="{Binding SelectedItem.Item.Image, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                    </Grid>
+                    <Border
+                        Grid.Row="1"
+                        Margin="3"
+                        Background="Transparent"
+                        BorderThickness="5"
+                        CornerRadius="5">
+                        <TextBox
+                            VerticalContentAlignment="Center"
+                            fw:Extensions.PlaceholderText="Name"
+                            Background="{x:Null}"
+                            BorderBrush="{x:Null}"
+                            BorderThickness="0"
+                            FontFamily="Segoe UI Semibold"
+                            MaxLength="20"
+                            Style="{StaticResource TextBoxRevealStyle}"
+                            Text="{Binding SelectedItem.Item.Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                            TextChanged="TextBoxBase_OnTextChanged" />
+                    </Border>
+
+                    <Border
+                        Grid.Row="2"
+                        Margin="3"
+                        Background="Transparent"
+                        BorderThickness="5"
+                        CornerRadius="5">
+                        <TextBox
+                            VerticalContentAlignment="Center"
+                            fw:Extensions.PlaceholderText="Price"
+                            Background="{x:Null}"
+                            BorderBrush="{x:Null}"
+                            BorderThickness="0"
+                            FontFamily="Segoe UI Semibold"
+                            MaxLength="20"
+                            Style="{StaticResource TextBoxRevealStyle}"
+                            Text="{Binding SelectedItem.Item.Price, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                            TextChanged="TextBoxBase_OnTextChanged" />
+                    </Border>
+
+                    <Border
+                        Grid.Row="3"
+                        Margin="3"
+                        Background="Transparent"
+                        BorderThickness="5"
+                        CornerRadius="5">
+                        <TextBox
+                            VerticalContentAlignment="Center"
+                            fw:Extensions.PlaceholderText="Quantity"
+                            Background="{x:Null}"
+                            BorderBrush="{x:Null}"
+                            BorderThickness="0"
+                            FontFamily="Segoe UI Semibold"
+                            MaxLength="20"
+                            Style="{StaticResource TextBoxRevealStyle}"
+                            Text="{Binding SelectedItem.Item.Quantity, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                            TextChanged="TextBoxBase_OnTextChanged" />
+                    </Border>
+                </Grid>
+            </Border>
+        </Grid>
+
         <!--<Border Background="Red" Grid.Column="1" Grid.Row="1">
             <ListBox ItemsSource="{Binding ItemUCs, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="{x:Null}">
                 <ListBox.ItemsPanel>

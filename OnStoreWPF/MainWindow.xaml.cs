@@ -1,7 +1,5 @@
 ﻿using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,6 +17,16 @@ namespace OnStoreWPF
     {
         public ObservableCollection<Item> Items { get; set; }
         private ObservableCollection<ItemUC> _itemUCs;
+
+        private ItemUC _selectedItem;
+
+        public ItemUC SelectedItem
+        {
+            get => _selectedItem;
+            set { _selectedItem = value; OnPropertyChanged(); }
+        }
+
+
 
         public ObservableCollection<ItemUC> ItemUCs
         {
@@ -69,6 +77,7 @@ namespace OnStoreWPF
                 Quantity = 14,
                 Image = "Assets/doritos.png"
             };
+
             Item i5 = new Item
             {
                 Id = 4,
@@ -77,6 +86,7 @@ namespace OnStoreWPF
                 Quantity = 7,
                 Image = "Assets/fanta.png"
             };
+
             Item i6 = new Item
             {
                 Id = 5,
@@ -85,6 +95,7 @@ namespace OnStoreWPF
                 Quantity = 17,
                 Image = "Assets/lays1.png"
             };
+
             Item i7 = new Item
             {
                 Id = 6,
@@ -93,6 +104,7 @@ namespace OnStoreWPF
                 Quantity = 13,
                 Image = "Assets/lays2.png"
             };
+
             Item i8 = new Item
             {
                 Id = 7,
@@ -101,6 +113,7 @@ namespace OnStoreWPF
                 Quantity = 32,
                 Image = "Assets/m&m's.png"
             };
+
             Item i9 = new Item
             {
                 Id = 8,
@@ -109,20 +122,30 @@ namespace OnStoreWPF
                 Quantity = 14,
                 Image = "Assets/oreo.png"
             };
+
             Items.Add(i1);
+
             Items.Add(i2);
+
             Items.Add(i3);
+
             Items.Add(i4);
+
             Items.Add(i5);
+
             Items.Add(i6);
+
             Items.Add(i7);
+
             Items.Add(i8);
+
             Items.Add(i9);
+
             foreach (var i in Items)
             {
                 ItemUCs.Add(new ItemUC { Item = i });
             }
-            
+
             foreach (var itemUC in ItemUCs)
             {
                 itemUC.ItemUControl.Width = 200;
@@ -171,15 +194,35 @@ namespace OnStoreWPF
 
         private void TextBoxBase_OnTextChanged(object sender, TextChangedEventArgs e)
         {
-           /* if (string.IsNullOrWhiteSpace(TextBoxSearch.Text))
+            /* if (string.IsNullOrWhiteSpace(TextBoxSearch.Text))
+             {
+                 Items = Items ;
+             }
+             else
+             {
+                 Prod = FilterByKeyword(TextBoxSearch.Text);
+             }
+             RefreshListBox(Prod);*/
+        }
+
+        private void ScrollViewer_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            
+            if (sender is ListBox listBox)
             {
-                Items = Items ;
+                if (listBox.SelectedItem is ItemUC itm)
+                {
+                    SelectedItem = itm;
+                    if (itm.isOpen)
+                    {
+                        EditPanel.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        EditPanel.Visibility = Visibility.Collapsed;
+                    }
+                }
             }
-            else
-            {
-                Prod = FilterByKeyword(TextBoxSearch.Text);
-            }
-            RefreshListBox(Prod);*/
         }
     }
 }

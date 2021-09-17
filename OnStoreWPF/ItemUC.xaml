@@ -11,7 +11,7 @@
     d:DesignHeight="230"
     d:DesignWidth="200"
     Background="Transparent"
-    mc:Ignorable="d">
+    mc:Ignorable="d" MouseDoubleClick="ItemUControl_MouseDoubleClick">
     <Grid>
         <Border Background="White" CornerRadius="20">
             <Grid

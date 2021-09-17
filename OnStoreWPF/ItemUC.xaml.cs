@@ -11,6 +11,9 @@ namespace OnStoreWPF
     /// </summary>
     public partial class ItemUC : UserControl, INotifyPropertyChanged
     {
+
+        public bool isOpen { get; set; }
+
         private Item _item;
 
         public Item Item
@@ -36,6 +39,11 @@ namespace OnStoreWPF
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private void ItemUControl_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            isOpen = true;
         }
     }
 }
